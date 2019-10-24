@@ -1,4 +1,4 @@
-# Mojohaus AspectJ-Maven-Plugin
+# Starter Fork of the Mojohaus AspectJ-Maven-Plugin
 
 This plugin  weaves AspectJ aspects into your classes using the AspectJ compiler ("ajc").
 Typically, aspects are used in one of two ways within your Maven reactors:
