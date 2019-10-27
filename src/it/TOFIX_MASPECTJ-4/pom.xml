@@ -39,7 +39,7 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.nickwongdev</groupId>
+        <groupId>io.starter</groupId>
         <artifactId>aspectj-maven-plugin</artifactId>
         <version>@project.version@</version>
         <executions>

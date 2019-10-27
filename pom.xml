@@ -3,17 +3,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.codehaus.mojo</groupId>
+    <groupId>io.starter</groupId>
     <artifactId>mojo-parent</artifactId>
-    <version>40</version>
+    <version>40-SNAPSHOT</version>
   </parent>
 
-  <groupId>com.nickwongdev</groupId>
   <artifactId>aspectj-maven-plugin</artifactId>
-  <version>1.12.1</version>
+  <version>1.12.1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
-  <name>Mojo's AspectJ Maven Plugin - NickWongDev Fork</name>
+  <name>Mojo's AspectJ Maven Plugin - Starter Inc Fork</name>
   <description>
         Handles AspectJ usage within Maven.
         Functionality provided is: weaving of aspects (or existing aspects from libraries) with the
@@ -35,15 +34,18 @@
 
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/nickwongdev/aspectj-maven-plugin/issues/</url>
+    <url>https://github.com/StarterInc/aspectj-maven-plugin/issues/</url>
   </issueManagement>
 
   <scm>
-    <connection>scm:git:https://github.com/nickwongdev/aspectj-maven-plugin.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/nickwongdev/aspectj-maven-plugin.git</developerConnection>
-    <url>https://github.com/nickwongdev/aspectj-maven-plugin</url>
+    <connection>scm:git:https://github.com/StarterInc/aspectj-maven-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/StarterInc/aspectj-maven-plugin.git</developerConnection>
+    <url>https://github.com/StarterInc/aspectj-maven-plugin</url>
     <tag>aspectj-maven-plugin-1.12.1</tag>
   </scm>
+  
+	
+  <!-- 
   <distributionManagement>
       <snapshotRepository>
           <id>sonatype-snapshot</id>
@@ -54,6 +56,8 @@
           <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
       </repository>
   </distributionManagement>
+   -->
+   
   <developers>
     <developer>
       <id>kaare</id>
@@ -108,6 +112,11 @@
     <contributor>
       <name>Nicholas Wong</name>
       <email>nickwongdev@gmail.com</email>
+      <timezone>America/LosAngeles</timezone>
+    </contributor>
+    <contributor>
+      <name>John McMahon</name>
+      <email>john@starter.io</email>
       <timezone>America/LosAngeles</timezone>
     </contributor>
   </contributors>
@@ -192,9 +201,11 @@
             <version>2.1</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
   <build>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -202,7 +213,7 @@
         <version>3.5</version>
         <configuration>
           <!-- see: https://github.com/apache/maven-plugin-tools/pull/11 -->
-          <mojoDependencies>com.nickwongdev:aspectj-maven-plugin</mojoDependencies>
+          <mojoDependencies>io.starter:aspectj-maven-plugin</mojoDependencies>
         </configuration>
       </plugin>
       <plugin>
@@ -291,7 +302,7 @@
         <version>3.5</version>
         <configuration>
           <!-- see: https://github.com/apache/maven-plugin-tools/pull/11 -->
-          <mojoDependencies>com.nickwongdev:aspectj-maven-plugin</mojoDependencies>
+          <mojoDependencies>io.starter:aspectj-maven-plugin</mojoDependencies>
         </configuration>
       </plugin>
       <plugin>
