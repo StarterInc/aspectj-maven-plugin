@@ -17,7 +17,7 @@
 		<connection>scm:git:https://github.com/StarterInc/aspectj-maven-plugin.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/StarterInc/aspectj-maven-plugin.git</developerConnection>
 		<url>https://github.com/StarterInc/aspectj-maven-plugin</url>
-		<tag>aspectj-maven-plugin-1.12.2</tag>
+		<tag>aspectj-maven-plugin-1.12.3</tag>
 	</scm>
 
 	<name>Starter Inc Fork of Mojo's AspectJ Maven Plugin</name>
@@ -496,6 +496,7 @@
 				</plugins>
 			</build>
 		</profile>
+		<!-- 
 		<profile>
 			<id>ossrh</id>
 			<activation>
@@ -505,5 +506,6 @@
 				<gpg.passphrase>st@ckg3n</gpg.passphrase>
 			</properties>
 		</profile>
+		 -->
 	</profiles>
 </project>
