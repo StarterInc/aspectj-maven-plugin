@@ -12,7 +12,14 @@
   <artifactId>aspectj-maven-plugin</artifactId>
   <version>1.12.1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
-
+  
+	<scm>
+		<connection>scm:git://github.com/StarterInc/aspectj-maven-plugin.git</connection>
+		<developerConnection>scm:git://github.com/StarterInc/aspectj-maven-plugin.git</developerConnection>
+		<url>https://github.com/StarterInc/aspectj-maven-plugin</url>
+		<tag>aspectj-maven-plugin-1.12.1</tag>
+	</scm>
+	
   <name>Starter Inc Fork of Mojo's AspectJ Maven Plugin</name>
   <description>
         Handles AspectJ usage within Maven.
