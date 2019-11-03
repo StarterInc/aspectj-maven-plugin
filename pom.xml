@@ -10,7 +10,7 @@
 
 	<groupId>io.starter</groupId>
 	<artifactId>aspectj-maven-plugin</artifactId>
-	<version>1.12.2-SNAPSHOT</version>
+	<version>1.12.2</version>
 	<packaging>maven-plugin</packaging>
 
 	<scm>
