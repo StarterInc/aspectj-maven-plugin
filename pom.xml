@@ -44,14 +44,6 @@
     <system>GitHub</system>
     <url>https://github.com/StarterInc/aspectj-maven-plugin/issues/</url>
   </issueManagement>
-
-  <scm>
-    <connection>scm:git:https://github.com/StarterInc/aspectj-maven-plugin.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/StarterInc/aspectj-maven-plugin.git</developerConnection>
-    <url>https://github.com/StarterInc/aspectj-maven-plugin</url>
-    <tag>aspectj-maven-plugin-1.12.1</tag>
-  </scm>
-  
 	
   <!-- 
   <distributionManagement>
