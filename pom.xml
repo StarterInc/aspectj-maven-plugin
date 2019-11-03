@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -146,7 +148,6 @@
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-plugin-api</artifactId>
-			<version>${mavenVersion}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.plugin-tools</groupId>
@@ -207,7 +208,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -217,7 +217,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -259,6 +259,22 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugins>
+				<plugin>
+					<groupId>se.jiderhamn</groupId>
+					<artifactId>promote-maven-plugin</artifactId>
+					<version>2.0.1</version>
+					<!-- Automatically execute promote:make-promotable after each snapshot 
+						build -->
+					<executions>
+						<execution>
+							<goals>
+								<goal>make-promotable</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
@@ -369,7 +385,7 @@
 
 	<profiles>
 
-		
+
 		<!-- AspectJ compilation requires that tools.jar (or its equivalent for 
 			some JDKs) is found on the classpath. The profiles named [something]toolsJar-profile 
 			define the systemPath for the tools.jar dependency by overriding the dummy 
@@ -468,7 +484,7 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
 		<profile>
 			<id>ossrh</id>
 			<activation>
@@ -478,39 +494,39 @@
 				<gpg.passphrase>st@ckg3n</gpg.passphrase>
 			</properties>
 		</profile>
-		 
-		 <!-- GPG Signature on release -->
-        <profile>
-            <id>release-sign-artifacts</id>
-            <activation>
-                <property>
-                    <name>gpg.keyname</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <!-- see http://maven.apache.org/plugins/maven-gpg-plugin/usage.html -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>release-sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                                <configuration>
-                                    <!-- Add GPG passphrase in Maven settings.xml under .m2 home, see
-                                        https://dzone.com/articles/publish-your-artifacts-to-maven-central -->
-                                    <keyname>${gpg.keyname}</keyname>
-                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+
+		<!-- GPG Signature on release -->
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>gpg.keyname</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- see http://maven.apache.org/plugins/maven-gpg-plugin/usage.html -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>release-sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<configuration>
+									<!-- Add GPG passphrase in Maven settings.xml under .m2 home, see 
+										https://dzone.com/articles/publish-your-artifacts-to-maven-central -->
+									<keyname>${gpg.keyname}</keyname>
+									<passphraseServerId>${gpg.keyname}</passphraseServerId>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
