@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.codehaus.mojo</groupId>
 		<artifactId>mojo-parent</artifactId>
-		<version>40</version>
+		<version>50</version>
 	</parent>
 
 	<groupId>io.starter</groupId>
@@ -28,7 +28,7 @@
   </description>
 	<inceptionYear>2018</inceptionYear>
 	<properties>
-		<aspectjVersion>1.9.2</aspectjVersion>
+		<aspectjVersion>1.9.4</aspectjVersion>
 		<mavenVersion>3.0.5</mavenVersion>
 		<doxiaVersion>1.8</doxiaVersion>
 		<mojo.java.target>1.8</mojo.java.target> <!-- aspectJ > 1.8.13 is JDK 1.8 minimum -->
@@ -486,7 +486,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<gpg.passphrase>st@ckg3n</gpg.passphrase>
+				<gpg.passphrase>${gpg.passphrase}</gpg.passphrase>
 			</properties>
 		</profile>
 
@@ -495,28 +495,23 @@
 			<id>release-sign-artifacts</id>
 			<activation>
 				<property>
-					<name>gpg.keyname</name>
+					<name>performRelease</name>
+					<value>true</value>
 				</property>
 			</activation>
 			<build>
 				<plugins>
-					<!-- see http://maven.apache.org/plugins/maven-gpg-plugin/usage.html -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
 						<executions>
 							<execution>
-								<id>release-sign-artifacts</id>
+								<id>sign-artifacts</id>
 								<phase>verify</phase>
 								<goals>
 									<goal>sign</goal>
 								</goals>
-								<configuration>
-									<!-- Add GPG passphrase in Maven settings.xml under .m2 home, see 
-										https://dzone.com/articles/publish-your-artifacts-to-maven-central -->
-									<keyname>${gpg.keyname}</keyname>
-									<passphraseServerId>${gpg.keyname}</passphraseServerId>
-								</configuration>
 							</execution>
 						</executions>
 					</plugin>

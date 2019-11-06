@@ -32,6 +32,9 @@ package org.codehaus.mojo.aspectj;
 public class Module
 {
 
+	/** Adding the version */
+	private String version;
+	
     /** Artifact's group id */
     private String groupId;
 
@@ -118,5 +121,13 @@ public class Module
     {
         this.type = type;
     }
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
 
 }
