@@ -10,14 +10,14 @@
 
 	<groupId>io.starter</groupId>
 	<artifactId>aspectj-maven-plugin</artifactId>
-	<version>1.12.8</version>
+	<version>1.12.9-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<scm>
 		<connection>scm:git:https://github.com/StarterInc/aspectj-maven-plugin.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/StarterInc/aspectj-maven-plugin.git</developerConnection>
 		<url>https://github.com/StarterInc/aspectj-maven-plugin</url>
-		<tag>aspectj-maven-plugin-1.12.8</tag>
+		<tag>aspectj-maven-plugin-1.12.4</tag>
 	</scm>
 
 	<name>Starter Inc Fork of Mojo's AspectJ Maven Plugin</name>
