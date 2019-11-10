@@ -60,9 +60,9 @@ public class AjcHelperTest
     public void testGetSourcesEmptyBaseDir()
         throws Exception
     {
-        List baseDirs = new ArrayList();
+        List<String> baseDirs = new ArrayList<String>();
         baseDirs.add( "src/shouldNotExist" );
-        HashSet sources = (HashSet) AjcHelper.getBuildFilesForSourceDirs( baseDirs,
+        HashSet<?> sources = (HashSet<?>) AjcHelper.getBuildFilesForSourceDirs( baseDirs,
             new String[] { AjcHelper.DEFAULT_INCLUDES },
             new String[] { AjcHelper.DEFAULT_EXCLUDES } );
         assertTrue( sources.isEmpty() );
@@ -78,7 +78,7 @@ public class AjcHelperTest
         final String fileName = "test.lst";
         final String fileAbsolutePath = baseDir.getAbsolutePath() + File.separator + fileName;
         
-        List args = new ArrayList();
+        List<String> args = new ArrayList<String>();
         args.add("-classpath");
         args.add("a:b:c");
         args.add("-showWeaveInfo");
@@ -88,7 +88,7 @@ public class AjcHelperTest
         {
             AjcHelper.writeBuildConfigToFile(args,fileName,baseDir);
             assertTrue("Config file not written to disk",FileUtils.fileExists(fileAbsolutePath));
-            List readArgs = AjcHelper.readBuildConfigFile(fileName,baseDir);
+            List<?> readArgs = AjcHelper.readBuildConfigFile(fileName,baseDir);
             assertEquals(args,readArgs);
         } catch (Exception e)
         {
@@ -103,6 +103,6 @@ public class AjcHelperTest
     public void testEmptyDependencyArtifacts()
     {
         MavenProject project = new MavenProject();
-        AjcHelper.createClassPath( project, Collections.EMPTY_LIST, Collections.EMPTY_LIST );
+        AjcHelper.createClassPath( project, Collections.emptyList(), Collections.emptyList() );
     }
 }

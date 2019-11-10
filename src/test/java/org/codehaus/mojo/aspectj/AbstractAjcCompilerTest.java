@@ -31,6 +31,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Model;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
@@ -60,7 +61,7 @@ public class AbstractAjcCompilerTest
         ajcCompMojo.project = project;
         setVariableValueToObject( ajcCompMojo, "outputDirectory", getTestFile( "/target/test-classes" ) );
         setVariableValueToObject( ajcCompMojo, "generatedTestSourcesDirectory", getTestFile( "/target/generated-test-sources/test-annotations" ) );
-        project.setDependencyArtifacts( new HashSet() );
+        project.setDependencyArtifacts( new HashSet<Artifact>() );
     }
 
     /**
@@ -73,7 +74,7 @@ public class AbstractAjcCompilerTest
         throws Exception
     {
         ajcCompMojo.assembleArguments();
-        List args = ajcCompMojo.ajcOptions;
+        List<?> args = ajcCompMojo.ajcOptions;
         assertFalse( args.contains( "-inpath" ) );
     }
 
@@ -126,14 +127,14 @@ public class AbstractAjcCompilerTest
         module2.setArtifactId( mod2Artifact );
         ajcCompMojo.weaveDependencies[1] = module2;
         // Modify project to include depencies
-        Set artifacts = new HashSet();
+        Set<Artifact> artifacts = new HashSet<Artifact>();
         artifacts.add( new MockArtifact( mod1Group, mod1Artifact ) );
         artifacts.add( new MockArtifact( mod2Group, mod2Artifact ) );
         ajcCompMojo.project.setArtifacts( artifacts );
         ajcCompMojo.assembleArguments();
-        List args = ajcCompMojo.ajcOptions;
+        List<?> args = ajcCompMojo.ajcOptions;
         assertTrue( args.contains( "-inpath" ) );
-        Iterator it = args.iterator();
+        Iterator<?> it = args.iterator();
         while ( !it.next().equals( "-inpath" ) )
         {
             // don't do nothing
@@ -164,14 +165,14 @@ public class AbstractAjcCompilerTest
         ajcCompMojo.weaveDependencies[0] = module1;
         String mod2classifier = "stable";
         // Modify project to include dependencies
-        Set artifacts = new HashSet();
+        Set<Artifact> artifacts = new HashSet<Artifact>();
         artifacts.add( new MockArtifact( mod1Group, mod1Artifact, mod1classifier, "jar" ) );
         artifacts.add( new MockArtifact( mod1Group, mod1Artifact, mod2classifier, "jar" ) );
         ajcCompMojo.project.setArtifacts( artifacts );
         ajcCompMojo.assembleArguments();
-        List args = ajcCompMojo.ajcOptions;
+        List<?> args = ajcCompMojo.ajcOptions;
         assertTrue( args.contains( "-inpath" ) );
-        Iterator it = args.iterator();
+        Iterator<?> it = args.iterator();
         while ( !it.next().equals( "-inpath" ) )
         {
             // don't do nothing
@@ -202,14 +203,14 @@ public class AbstractAjcCompilerTest
         ajcCompMojo.weaveDependencies[0] = module1;
         String mod2type = "bar";
         // Modify project to include dependencies
-        Set artifacts = new LinkedHashSet();
+        Set<Artifact> artifacts = new LinkedHashSet<Artifact>();
         artifacts.add( new MockArtifact( mod1Group, mod1Artifact, null, mod1type ) );
         artifacts.add( new MockArtifact( mod1Group, mod1Artifact, null, mod2type ) );
         ajcCompMojo.project.setArtifacts( artifacts );
         ajcCompMojo.assembleArguments();
-        List args = ajcCompMojo.ajcOptions;
+        List<?> args = ajcCompMojo.ajcOptions;
         assertTrue( args.contains( "-inpath" ) );
-        Iterator it = args.iterator();
+        Iterator<?> it = args.iterator();
         while ( !it.next().equals( "-inpath" ) )
         {
             // don't do nothing
@@ -232,9 +233,9 @@ public class AbstractAjcCompilerTest
         String dir2 = "target/classes2";
         ajcCompMojo.weaveDirectories = new String[] { dir1, dir2 };
         ajcCompMojo.assembleArguments();
-        List args = ajcCompMojo.ajcOptions;
+        List<?> args = ajcCompMojo.ajcOptions;
         assertTrue( args.contains( "-inpath" ) );
-        Iterator it = args.iterator();
+        Iterator<?> it = args.iterator();
         while ( !it.next().equals( "-inpath" ) )
         {
             // don't do nothing
@@ -256,7 +257,7 @@ public class AbstractAjcCompilerTest
         throws Exception
     {
         ajcCompMojo.assembleArguments();
-        List args = ajcCompMojo.ajcOptions;
+        List<?> args = ajcCompMojo.ajcOptions;
         assertFalse( args.contains( "-aspectpath" ) );
     }
 
@@ -309,14 +310,14 @@ public class AbstractAjcCompilerTest
         module2.setArtifactId( mod2Artifact );
         ajcCompMojo.aspectLibraries[1] = module2;
         // Modify project to include depencies
-        Set artifacts = new HashSet();
+        Set<Artifact> artifacts = new HashSet<Artifact>();
         artifacts.add( new MockArtifact( mod1Group, mod1Artifact ) );
         artifacts.add( new MockArtifact( mod2Group, mod2Artifact ) );
         ajcCompMojo.project.setArtifacts( artifacts );
         ajcCompMojo.assembleArguments();
-        List args = ajcCompMojo.ajcOptions;
+        List<?> args = ajcCompMojo.ajcOptions;
         assertTrue( args.contains( "-aspectpath" ) );
-        Iterator it = args.iterator();
+        Iterator<?> it = args.iterator();
         while ( !it.next().equals( "-aspectpath" ) )
         {
             // don't do nothing
@@ -341,7 +342,7 @@ public class AbstractAjcCompilerTest
         
         ajcCompMojo.aspectLibraries = new Module[] { module };
         
-        Set artifacts = new HashSet();
+        Set<Artifact> artifacts = new HashSet<Artifact>();
         artifacts.add( new MockArtifact( groupId, artifactId ) );
         ajcCompMojo.project.setArtifacts( artifacts );
         ajcCompMojo.assembleArguments();

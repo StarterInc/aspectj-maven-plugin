@@ -100,7 +100,7 @@ public class AjcTestCompileMojo
     {
         if (isSkipTestCompile())
         {
-            getLog().info("Not compiling test sources");
+            getLog().info("StarterAspecjtJ: Not compiling test sources");
             return;
         }
         super.execute();

@@ -82,7 +82,7 @@ public class MavenMessageHandler extends MessageHandler {
         this.showDetailsForMessageKindList = showDetailsForMessageKindList;
 
         if (log.isInfoEnabled()) {
-            log.info("Showing AJC message detail for messages of types: " + showDetailsForMessageKindList);
+            log.info("StarterAspecjtJ: Showing AJC message detail for messages of types: " + showDetailsForMessageKindList);
         }
     }
 

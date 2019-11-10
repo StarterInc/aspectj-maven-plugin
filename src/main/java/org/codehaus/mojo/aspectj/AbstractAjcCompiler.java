@@ -469,14 +469,14 @@ public abstract class AbstractAjcCompiler extends AbstractAjcMojo {
 
         if (isSkip()) {
             if (getLog().isInfoEnabled()) {
-                getLog().info("Skipping execution because of 'skip' option");
+                getLog().info("StarterAspecjtJ: Skipping execution because of 'skip' option");
             }
             return;
         }
 
         ArtifactHandler artifactHandler = project.getArtifact().getArtifactHandler();
         if (!forceAjcCompile && !"java".equalsIgnoreCase(artifactHandler.getLanguage())) {
-            getLog().warn("Not executing aspectJ compiler as the project is not a Java classpath-capable package");
+            getLog().warn("StarterApectJ: Not executing aspectJ compiler as the project is not a Java classpath-capable package");
             return;
         }
 
@@ -515,12 +515,12 @@ public abstract class AbstractAjcCompiler extends AbstractAjcMojo {
         assembleArguments();
 
         if (!forceAjcCompile && !hasSourcesToCompile()) {
-            getLog().warn("No sources found skipping aspectJ compile");
+            getLog().warn("StarterApectJ: No sources found skipping aspectJ compile");
             return;
         }
 
         if (!forceAjcCompile && !isBuildNeeded()) {
-            getLog().info("No modifications found skipping aspectJ compile");
+            getLog().info("StarterAspecjtJ: No modifications found skipping aspectJ compile");
             return;
         }
 
@@ -644,7 +644,7 @@ public abstract class AbstractAjcCompiler extends AbstractAjcMojo {
             for (int scannerIndex = 0; scannerIndex < getJavaSources().length; scannerIndex++) {
                 Scanner scanner = getJavaSources()[scannerIndex];
                 if (scanner.getBasedir() == null) {
-                    getLog().info("Source without basedir, skipping it.");
+                    getLog().info("StarterAspecjtJ: Source without basedir, skipping it.");
                 } else {
                     scanner.scan();
                     for (int fileIndex = 0; fileIndex < scanner.getIncludedFiles().length; fileIndex++) {
