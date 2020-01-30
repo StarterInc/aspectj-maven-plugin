@@ -403,8 +403,12 @@ public abstract class AbstractAjcCompiler extends AbstractAjcMojo {
     /**
      * Forces re-compilation, regardless of whether the compiler arguments or the sources have changed.
      *
+     * Starter changed default to "true" as it is the behavior of maven to re-build jars but this code does not detect it.
+     * 
+     * clean install  "-DforceAjcCompile=false"
+     * 
      */
-    @Parameter( defaultValue = "false" )
+    @Parameter( defaultValue = "true" )
     protected boolean forceAjcCompile;
 
     /**
